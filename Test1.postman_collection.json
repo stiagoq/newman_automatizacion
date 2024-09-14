@@ -1,0 +1,1971 @@
+{
+	"info": {
+		"_postman_id": "b63a436d-1d6b-44fe-ba82-65abd01fad29",
+		"name": "Test 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28894466",
+		"_collection_link": "https://bold-shuttle-523216.postman.co/workspace/Prueba-tecnica-Guerra~fa1ea247-1d7a-4f59-9f7f-aa42977f5e90/collection/28894466-b63a436d-1d6b-44fe-ba82-65abd01fad29?action=share&source=collection_link&creator=28894466"
+	},
+	"item": [
+		{
+			"name": "Lista1",
+			"item": [
+				{
+					"name": "Marca1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"marcelle\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    ",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=marcelle",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marcelle"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProducto1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"marcelle\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyeliner\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=marcelle&product_type=eyeliner",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marcelle"
+								},
+								{
+									"key": "product_type",
+									"value": "eyeliner"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marca2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"fenty\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=fenty",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "fenty"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProducto2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"milani\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"blush\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products.json?brand=milani&product_type=blush",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "milani"
+								},
+								{
+									"key": "product_type",
+									"value": "blush"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marca3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"iman\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=iman",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "iman"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProducto3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        console.log(randomProduct)",
+									"        console.log(responseJson200.length)",
+									"",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        console.log(brand)",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"iman\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"mascara\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=iman&product_type=mascara",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "iman"
+								},
+								{
+									"key": "product_type",
+									"value": "mascara"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lista2",
+			"item": [
+				{
+					"name": "Producto1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyeshadow\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    ",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?product_type=eyeshadow",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "product_type",
+									"value": "eyeshadow"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductoCategoria1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product_category = responseJson200[randomProduct].category",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product category is valid\", function () {",
+									"            pm.expect(product_category).to.eql(\"cream\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyeliner\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?product_type=eyeliner&product_category=cream",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marcelle",
+									"disabled": true
+								},
+								{
+									"key": "product_type",
+									"value": "eyeliner"
+								},
+								{
+									"key": "product_category",
+									"value": "cream"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyebrow\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?product_type=eyebrow",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "product_type",
+									"value": "eyebrow"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductoCategoria2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product_category = responseJson200[randomProduct].category",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product category is valid\", function () {",
+									"            pm.expect(product_category).to.eql(\"cream\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"blush\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products.json?product_type=blush&product_category=cream",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "milani",
+									"disabled": true
+								},
+								{
+									"key": "product_type",
+									"value": "blush"
+								},
+								{
+									"key": "product_category",
+									"value": "cream"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"lipstick\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?product_type=lipstick",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "product_type",
+									"value": "lipstick"
+								},
+								{
+									"key": "product_category",
+									"value": "liquid",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductoCategoria3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        console.log(randomProduct)",
+									"        console.log(responseJson200.length)",
+									"",
+									"        var product_category = responseJson200[randomProduct].category",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(product_category).to.eql(\"liquid\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"lipstick\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?product_type=lipstick&product_category=liquid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "product_type",
+									"value": "lipstick"
+								},
+								{
+									"key": "product_category",
+									"value": "liquid"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lista3",
+			"item": [
+				{
+					"name": "ProductoMarca1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"foundation\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    ",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=maybelline&product_type=foundation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "maybelline"
+								},
+								{
+									"key": "product_type",
+									"value": "foundation"
+								},
+								{
+									"key": "product_category",
+									"value": "mineral",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProductoTag1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"marcelle\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyeliner\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=marcelle&product_type=eyeliner&product_tags=canadian",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marcelle"
+								},
+								{
+									"key": "product_type",
+									"value": "eyeliner"
+								},
+								{
+									"key": "product_tags",
+									"value": "canadian"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductoMarca2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"eyebrow\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=maybelline&product_type=blush",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "maybelline"
+								},
+								{
+									"key": "product_type",
+									"value": "blush"
+								},
+								{
+									"key": "product_category",
+									"value": "powder",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProductoTag2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"marcelle\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"blush\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/products.json?brand=marcelle&product_type=blush&product_tags=canadian",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marcelle"
+								},
+								{
+									"key": "product_type",
+									"value": "blush"
+								},
+								{
+									"key": "product_tags",
+									"value": "canadian"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductoMarca3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"lipstick\");",
+									"        });",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=maybelline&product_type=blush&product_category=cream",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "maybelline"
+								},
+								{
+									"key": "product_type",
+									"value": "blush"
+								},
+								{
+									"key": "product_category",
+									"value": "cream"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcaProductoTag3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        pm.environment.set(\"relativePath\", \"api/v1\");",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.environment.set(\"relativePath\", \"ai/v\")",
+									"    break;",
+									"",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"switch(pm.info.iteration){",
+									"    case 0:",
+									"        var responseJson200 = pm.response.json()",
+									"",
+									"        var schemaJson200 = {",
+									"            type:\"array\",",
+									"            items:{",
+									"                type:\"object\",",
+									"            }",
+									"        }",
+									"",
+									"        pm.test('the JSON response 200 schema is valid', function(){",
+									"                pm.response.to.have.jsonSchema(schemaJson200)",
+									"            })",
+									"",
+									"",
+									"        var randomProduct = Math.floor(Math.random() * (responseJson200.length))",
+									"        console.log(randomProduct)",
+									"        console.log(responseJson200.length)",
+									"",
+									"        var brand = responseJson200[randomProduct].brand",
+									"        console.log(brand)",
+									"        var product = responseJson200[randomProduct].product_type",
+									"",
+									"        pm.test(\"The brand is valid\", function () {",
+									"            pm.expect(brand).to.eql(\"marienatie\");",
+									"        });",
+									"",
+									"        pm.test(\"The product is valid\", function () {",
+									"            pm.expect(product).to.eql(\"lipstick\");",
+									"        });",
+									"",
+									"",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"    break;",
+									"",
+									"    case 1:",
+									"        pm.test(\"Status code is 400\", function () {",
+									"            pm.response.to.have.status(404);",
+									"        });",
+									"",
+									"        pm.test(\"Validate HTML Error\", function(){",
+									"                pm.expect(pm.response.text()).to.include(\"<!DOCTYPE html>\")",
+									"            })",
+									"",
+									"    break;",
+									"    default:",
+									"        console.log(\"fuera del rango\")",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{relativePath}}/products.json?brand=marienatie&product_type=lipstick&product_tags=certclean",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{relativePath}}",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "marienatie"
+								},
+								{
+									"key": "product_type",
+									"value": "lipstick"
+								},
+								{
+									"key": "product_tags",
+									"value": "certclean"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
