@@ -28,6 +28,7 @@ jobs:
 
     - name: Run test with Newman
       run: |
+        export NODE_NO_WARNINGS=1
         NODE_OPTIONS="--no-deprecation" newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html --verbose
 
     - name: Display error logs
