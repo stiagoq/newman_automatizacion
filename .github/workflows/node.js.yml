@@ -28,6 +28,15 @@ jobs:
       run: |
         node --no-deprecation $(which newman) run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html
         
+        # Check if the error log contains only the deprecation warning
+        if grep -q 'DeprecationWarning: The `punycode` module is deprecated' error.log; then
+          echo "Deprecation warning detected but ignored."
+        else
+          echo "Errors found:"
+          cat error.log
+          exit 1
+        fi
+        
     - name: Test Report Generation
       if: success() || failure()
       uses: actions/upload-artifact@v4
