@@ -1,3 +1,6 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
 name: Node.js CI
 
 on:
@@ -5,37 +8,30 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-
     - name: Use Node.js 
       uses: actions/setup-node@v4
       with:
         node-version: "22"
+        #cache: 'npm'
 
-    - name: Set up Newman
+    - name: Configura set up of newman
       run: |
-        npm install -g newman@latest
-        npm install -g newman-reporter-htmlextra@latest
-
-    - name: Create directory for reports
-      run: mkdir -p newman
-
-    - name: Create script to run Newman
+        #npm ci
+        npm install -g newman 
+        npm install -g newman-reporter-htmlextra
+    - name: Run test with newman
       run: |
-        echo '#!/bin/bash' > run-newman.sh
-        echo 'export NODE_NO_WARNINGS=1' >> run-newman.sh
-        echo 'NODE_OPTIONS="--no-deprecation" newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html --verbose' >> run-newman.sh
-        chmod +x run-newman.sh
-
-    - name: Run test with Newman
-      run: ./run-newman.sh
-
+        #newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html
+        node --no-deprecation $(which newman) run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra 
+        
     - name: Test Report Generation
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: Newman report
-        path: newman/reporte.html
+          name: Newman report
+          path: newman/reporte.html
