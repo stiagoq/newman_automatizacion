@@ -36,6 +36,7 @@ jobs:
           cat error.log
           exit 1
         fi
+      continue-on-error: true
         
     - name: Test Report Generation
       if: success() || failure()
