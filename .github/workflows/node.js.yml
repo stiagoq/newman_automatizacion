@@ -22,7 +22,7 @@ jobs:
     - name: Configura set up of newman
       run: |
         #npm ci
-        npm install -g newman /
+        npm install -g newman 
         npm install -g newman-reporter-htmlextra
 
     - name: Run test with newman
