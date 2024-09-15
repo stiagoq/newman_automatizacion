@@ -28,7 +28,7 @@ jobs:
     - name: Run test with newman
       run: |
         #newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html
-        node --no-deprecation $(which newman) run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra 
+        node --no-deprecation $(which newman) run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html
         
     - name: Test Report Generation
       if: success() || failure()
