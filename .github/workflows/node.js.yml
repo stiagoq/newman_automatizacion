@@ -23,10 +23,15 @@ jobs:
     - name: Create directory for reports
       run: mkdir -p newman
 
-    - name: Run test with Newman
+    - name: Create script to run Newman
       run: |
-        export NODE_NO_WARNINGS=1
-        NODE_OPTIONS="--no-deprecation" newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html --verbose
+        echo '#!/bin/bash' > run-newman.sh
+        echo 'export NODE_NO_WARNINGS=1' >> run-newman.sh
+        echo 'NODE_OPTIONS="--no-deprecation" newman run Test1.postman_collection.json --environment Test1.postman_environment.json -r htmlextra --reporter-htmlextra-export newman/reporte.html --verbose' >> run-newman.sh
+        chmod +x run-newman.sh
+
+    - name: Run test with Newman
+      run: ./run-newman.sh
 
     - name: Test Report Generation
       if: success() || failure()
